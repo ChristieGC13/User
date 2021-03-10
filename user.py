@@ -3,9 +3,6 @@
 # display_user_balance(self) - have this method print the user's name and account balance to the terminal
 # eg. "User: Guido van Rossum, Balance: $150
 
-
-# BONUS: transfer_money(self, other_user, amount) - have this method decrease the user's balance by the amount and add that amount to other other_user's balance
-
 class User:
     def __init__(self, name, email_address):
         self.name = name
@@ -20,6 +17,11 @@ class User:
     
     def display_user_balance(self):
         print(f'User: {self.name}, Balance:${self.account_balance}')
+
+    def transfer_money(self, other_user, amount):
+        self.make_withdrawal(amount)
+        other_user.make_deposit(amount)
+
 
 
 Tom = User('Tom Featherington', 'tfeatherington3@cmail.com')
@@ -44,4 +46,11 @@ Violet.make_deposit(500)
 Violet.make_withdrawal(125)
 Violet.make_withdrawal(50)
 Violet.make_withdrawal(150)
+Violet.display_user_balance()
+
+# BONUS: transfer_money(self, other_user, amount) - have this method decrease the user's balance by the amount and add that amount to other other_user's balance
+
+Tom.transfer_money(Violet, 50)
+
+Tom.display_user_balance()
 Violet.display_user_balance()
